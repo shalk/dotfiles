@@ -87,6 +87,7 @@ main(){
       fi
     done
     local source="$HOME/.$item" 
+    _revert_dotfile $item || true
     _backup_dotfile  $item && _link_dotfile $item
 
   done  
