@@ -15,17 +15,21 @@ _backup_dotfile(){
     echo "_backup_dotfile paramter is null" >&2
     return 1
   fi
+
   if [ -f $HOME/.$item ] || [ -d $HOME/.$item ]
   then
-    mv $HOME/.$item  $HOME/.${item}.local
-  elif [ -L $HOME/.$item ]
-  then
-    echo "look like you have link this file"
-    return 2
+    if [ -L $HOME/.$item ]
+    then
+      echo "[ERROR] backup_dotfile: look like you have link this file $HOME/.$item " >&2
+      return 2
+    else
+      mv $HOME/.$item  $HOME/.${item}.local
+    fi
   else 
-    echo "$HOME/.$item not exists !" >&2
+    echo "[ERROR] backup_dotfile: $HOME/.$item not exists !" >&2
     return 3
   fi
+
   return 
 }
 
@@ -45,20 +49,22 @@ _revert_dotfile(){
   then
     return 1
   fi
-  if [ -L $HOME/.$item ]
+  source="$HOME/.${item}.local"
+  dest="$HOME/.$item"
+  # need source is a normal file or directory
+  if [ -f $source ] || [ -d $source ] 
   then
-    if [ -f $HOME/.$item.local ] || [ -d $HOME/.$item.local ]
+    if [ ! -L $source ]
     then
-      rm -f  "$HOME/.$item"
-      mv $HOME/.${item}.local $HOME/.$item
+      /bin/rm -f  "$dest"
+      /bin/mv "$source" "$dest"
       return 
-    else 
-      echo "$HOME/.$item.local not exists ;can not revert "
-      return 2
+    else
+      echo "[ERROR] revert_dotfile :$HOME/.$item.local is a link file "
     fi
-  else
-    echo "$HOME/.$item is not a link for my dotfile" >&2
-    return 1
+  else 
+    echo "[ERROR] revert_dotfile :$HOME/.$item.local not exists ;can not revert "
+    return 2
   fi
 }
 revert(){
@@ -79,6 +85,7 @@ revert(){
 main(){
   for item in `ls`
   do
+#    item="bashrc"
     for ignore_file in ${ignore_list[@]}
     do
       if test $item == $ignore_file
@@ -89,7 +96,7 @@ main(){
     local source="$HOME/.$item" 
     _revert_dotfile $item || true
     _backup_dotfile  $item && _link_dotfile $item
-
+#   break
   done  
 }
 usage(){
