@@ -102,7 +102,7 @@ usage(){
   -h| --help   Usage
   " 
 }
-if [ X"$1" == X"--uninstall" ]
+if [ X"$1" == X"--uninstall" ] ||  [ X"$1" == X"-u" ]
 then
   revert   
 elif [ X"$1" == X"--help" ] || [ X"$1" == X"-h" ] 
