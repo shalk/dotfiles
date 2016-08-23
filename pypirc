@@ -6,3 +6,6 @@ index-servers =
 username:
 password:
 
+
+[install]
+trusted-host = pypi.douban.com
