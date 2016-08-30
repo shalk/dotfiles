@@ -34,6 +34,10 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'jmcantrell/vim-virtualenv'
+
+"html emmet
+Plugin 'mattn/emmet-vim'
 " Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
@@ -66,22 +70,23 @@ set foldlevel=99
 nnoremap <space> za
 
 
-au BufNewFile,BufRead *.py set tabstop=4  softtabstop=4  shiftwidth=4  textwidth=200  expandtab  autoindent  fileformat=unix 
-au BufNewFile,BufRead *.js, *.html, *.css set tabstop=2  softtabstop=2  shiftwidth=2  
+autocmd BufNewFile,BufRead *.py set tabstop=4  softtabstop=4  shiftwidth=4  textwidth=200  expandtab  autoindent  fileformat=unix 
+autocmd BufNewFile,BufRead *.js, *.css set tabstop=2  softtabstop=2  shiftwidth=2 expandtab 
+autocmd BufNewFile,BufRead  *.html set tabstop=2  softtabstop=2  shiftwidth=2 expandtab 
 au BufNewFile,BufRead *.sh  set tabstop=2  softtabstop=2  shiftwidth=2  expandtab autoindent
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 set encoding=utf-8
 "python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
+"py << EOF
+"import os
+"import sys
+"if 'VIRTUAL_ENV' in os.environ:
+"  project_base_dir = os.environ['VIRTUAL_ENV']
+"  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"  execfile(activate_this, dict(__file__=activate_this))
+"EOF
 
 let python_highlight_all=1
 syntax on
