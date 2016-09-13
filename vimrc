@@ -69,13 +69,38 @@ set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <space> za
 
-
 autocmd BufNewFile,BufRead *.py set tabstop=4  softtabstop=4  shiftwidth=4  textwidth=200  expandtab  autoindent  fileformat=unix 
 autocmd BufNewFile,BufRead *.js, *.css set tabstop=2  softtabstop=2  shiftwidth=2 expandtab 
 autocmd BufNewFile,BufRead  *.html set tabstop=2  softtabstop=2  shiftwidth=2 expandtab 
 au BufNewFile,BufRead *.sh  set tabstop=2  softtabstop=2  shiftwidth=2  expandtab autoindent
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+"auto add python header --start
+au BufNewFile *.py 0r ~/.python_header.template
+autocmd BufNewFile *.py ks|call FileName()|'s
+autocmd BufNewFile *.py ks|call CreatedTime()|'s
+fun FileName()
+    if line("$") > 10
+        let l = 10  "这里是字母L 不是数字1
+    else
+        let l = line("$")
+    endif
+    exe "1," . l . "g/File Name:.*/s/File Name:.*/File Name: " .expand("%")
+    "最前面是数字1，这里的File Name:要和模板中一致
+endfun
+
+fun CreatedTime()
+    if line("$") > 10
+        let l = 10
+    else
+        let l = line("$")
+    endif
+    exe "1," . l . "g/Created Time:.*/s/Created Time:.*/Created Time: ".strftime("%Y-%m-%d %T")
+    "这里Create Time:要和模板中一致
+endfun
+"auto add python header --end
+
 
 set encoding=utf-8
 "python with virtualenv support
