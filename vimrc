@@ -36,6 +36,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'jmcantrell/vim-virtualenv'
 
+Plugin 'heavenshell/vim-pydocstring'
+
 "html emmet
 Plugin 'mattn/emmet-vim'
 " Git plugin not hosted on GitHub
