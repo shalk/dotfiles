@@ -21,3 +21,8 @@ if [ -e /usr/share/terminfo/x/xterm-256color -a X$TERM == X"xterm" ]; then
     export TERM='xterm-256color'
 fi
 export SVN_EDITOR=vim
+
+if [ `umask` == "0000" ] 
+then
+  umask 022
+fi
