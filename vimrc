@@ -573,5 +573,5 @@ let g:ycm_autoclose_preview_window_after_completion=1
 "    echoerr "Sorry, this version of (g)vim was not compiled with +multi_byte" 
 "endif
 ""turn off bell
-"set vb
-"set t_vb=
+set vb
+set t_vb=
