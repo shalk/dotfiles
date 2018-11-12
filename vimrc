@@ -19,7 +19,7 @@ Plugin 'L9'
 
 Plugin 'tmhedberg/SimpylFold'
 
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 
 Plugin 'scrooloose/syntastic'
 
@@ -34,12 +34,14 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'jmcantrell/vim-virtualenv'
+"Plugin 'jmcantrell/vim-virtualenv'
 
-Plugin 'heavenshell/vim-pydocstring'
+"Plugin 'heavenshell/vim-pydocstring'
 
 "html emmet
 Plugin 'mattn/emmet-vim'
+"golang plugin
+Plugin 'fatih/vim-go'
 " Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
@@ -71,11 +73,14 @@ set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <space> za
 
+autocmd BufNewFile,BufRead *.java set tabstop=4  softtabstop=4  shiftwidth=4  textwidth=200  expandtab  autoindent  fileformat=unix 
+autocmd BufNewFile,BufRead *.xml set tabstop=4  softtabstop=4  shiftwidth=4  textwidth=200  expandtab  autoindent  fileformat=unix 
 autocmd BufNewFile,BufRead *.py set tabstop=4  softtabstop=4  shiftwidth=4  textwidth=200  expandtab  autoindent  fileformat=unix 
-autocmd BufNewFile,BufRead *.js, *.css set tabstop=2  softtabstop=2  shiftwidth=2 expandtab 
+autocmd BufNewFile,BufRead *.js,*.css set tabstop=2  softtabstop=2  shiftwidth=2 expandtab 
 autocmd BufNewFile,BufRead  *.html set tabstop=2  softtabstop=2  shiftwidth=2 expandtab 
 au BufNewFile,BufRead *.sh  set tabstop=2  softtabstop=2  shiftwidth=2  expandtab autoindent
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufRead  *.yaml,*.yml set tabstop=2  softtabstop=2  shiftwidth=2 expandtab 
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 "auto add python header --start
