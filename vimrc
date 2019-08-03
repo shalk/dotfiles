@@ -1,47 +1,47 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+"set nocompatible              " be iMproved, required
+"filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin('~/.vim/plugged')
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+"Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 " Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
+Plug 'vim-scripts/L9'
 
-Plugin 'tmhedberg/SimpylFold'
+Plug 'tmhedberg/SimpylFold'
 
 "Bundle 'Valloric/YouCompleteMe'
 
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
-Plugin 'nvie/vim-flake8'
+Plug 'nvie/vim-flake8'
 
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
+Plug 'jnurmine/Zenburn'
+Plug 'altercation/vim-colors-solarized'
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 "Plugin 'jmcantrell/vim-virtualenv'
 
 "Plugin 'heavenshell/vim-pydocstring'
 
 "html emmet
-Plugin 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 "golang plugin
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 " Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
@@ -54,7 +54,7 @@ Plugin 'fatih/vim-go'
 "Plugin 'ascenator/L9', {'name': 'newL9'}
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
